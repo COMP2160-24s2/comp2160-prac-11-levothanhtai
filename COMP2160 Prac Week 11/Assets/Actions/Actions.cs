@@ -53,6 +53,15 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""scroll"",
+                    ""type"": ""Value"",
+                    ""id"": ""f32b36e0-cab0-44a0-af28-9ca3b151898c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -86,6 +95,17 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""delta"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d91ad05-af90-414e-ab14-95575331874b"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -138,6 +158,7 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         m_mouse_position = m_mouse.FindAction("position", throwIfNotFound: true);
         m_mouse_select = m_mouse.FindAction("select", throwIfNotFound: true);
         m_mouse_delta = m_mouse.FindAction("delta", throwIfNotFound: true);
+        m_mouse_scroll = m_mouse.FindAction("scroll", throwIfNotFound: true);
         // camera
         m_camera = asset.FindActionMap("camera", throwIfNotFound: true);
         m_camera_zoom = m_camera.FindAction("zoom", throwIfNotFound: true);
@@ -205,6 +226,7 @@ public partial class @Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_mouse_position;
     private readonly InputAction m_mouse_select;
     private readonly InputAction m_mouse_delta;
+    private readonly InputAction m_mouse_scroll;
     public struct MouseActions
     {
         private @Actions m_Wrapper;
@@ -212,6 +234,7 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         public InputAction @position => m_Wrapper.m_mouse_position;
         public InputAction @select => m_Wrapper.m_mouse_select;
         public InputAction @delta => m_Wrapper.m_mouse_delta;
+        public InputAction @scroll => m_Wrapper.m_mouse_scroll;
         public InputActionMap Get() { return m_Wrapper.m_mouse; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -230,6 +253,9 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @delta.started += instance.OnDelta;
             @delta.performed += instance.OnDelta;
             @delta.canceled += instance.OnDelta;
+            @scroll.started += instance.OnScroll;
+            @scroll.performed += instance.OnScroll;
+            @scroll.canceled += instance.OnScroll;
         }
 
         private void UnregisterCallbacks(IMouseActions instance)
@@ -243,6 +269,9 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @delta.started -= instance.OnDelta;
             @delta.performed -= instance.OnDelta;
             @delta.canceled -= instance.OnDelta;
+            @scroll.started -= instance.OnScroll;
+            @scroll.performed -= instance.OnScroll;
+            @scroll.canceled -= instance.OnScroll;
         }
 
         public void RemoveCallbacks(IMouseActions instance)
@@ -311,6 +340,7 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         void OnPosition(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnDelta(InputAction.CallbackContext context);
+        void OnScroll(InputAction.CallbackContext context);
     }
     public interface ICameraActions
     {
