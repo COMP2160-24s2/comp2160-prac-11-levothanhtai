@@ -8,7 +8,7 @@ public class CameraZoom : MonoBehaviour
     public float minOrthographicSize = 5f;
     public float maxOrthographicSize = 20f;
     public float minFov = 20f;
-    public float maxFov = 60f;
+    public float maxFov = 100f;
 
     private InputAction zoomAction;
 

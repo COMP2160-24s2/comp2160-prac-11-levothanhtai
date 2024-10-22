@@ -624,6 +624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1061253246}
+  - component: {fileID: 1061253247}
   m_Layer: 0
   m_Name: Follower
   m_TagString: Untagged
@@ -647,6 +648,19 @@ Transform:
   - {fileID: 7675371378090306038}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1061253247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061253245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7574f4d99a1d9664e800b230c6ab6082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  marble: {fileID: 923977101}
 --- !u!1001 &1183061768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -847,7 +861,7 @@ Transform:
   m_GameObject: {fileID: 4601777957755373507}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 6.9923177, y: 13.628848, z: -5.9924307}
+  m_LocalPosition: {x: 0, y: 9.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -862,10 +876,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4601777957755373507}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7574f4d99a1d9664e800b230c6ab6082, type: 3}
+  m_Script: {fileID: 11500000, guid: 5426dc638d594bb449d15d558da47ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  marble: {fileID: 923977101}
+  mainCamera: {fileID: 2408856355099670849}
+  zoomSpeed: 10
+  minOrthographicSize: 5
+  maxOrthographicSize: 20
+  minFov: 20
+  maxFov: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
