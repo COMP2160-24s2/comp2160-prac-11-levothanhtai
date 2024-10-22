@@ -3,12 +3,12 @@ using UnityEngine.InputSystem;
 
 public class CameraZoom : MonoBehaviour
 {
-    public Camera mainCamera;
-    public float zoomSpeed = 10f;
-    public float minOrthographicSize = 5f;
-    public float maxOrthographicSize = 20f;
-    public float minFov = 20f;
-    public float maxFov = 100f;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private float zoomSpeed = 10f;
+    [SerializeField] private float minOrthographicSize = 5f;
+    [SerializeField] private float maxOrthographicSize = 20f;
+    [SerializeField] private float minFov = 20f;
+    [SerializeField] private float maxFov = 100f;
 
     private InputAction zoomAction;
 
